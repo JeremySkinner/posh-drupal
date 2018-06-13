@@ -6,4 +6,6 @@ if(-not (test-path $keyfile)) {
 
 $key = get-content $keyfile
 
+write-host Publishing...
 Publish-Module -Name "./posh-drupal.psm1" -NuGetApiKey $key
+write-host Done.
