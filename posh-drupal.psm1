@@ -4,7 +4,8 @@
 function New-Drupal() {
   return [Drupal]::new();
 }
-function drush($path = (Get-Location)) {
+function drush() {
+  $path = Get-Location
   $drupal = New-Drupal
   $root = $drupal.findRoot($path);
   $drush = $drupal.findDrush($root);
@@ -20,7 +21,8 @@ function drush($path = (Get-Location)) {
   }
 }
 
-function drupal($path = (Get-Location)) {
+function drupal() {
+  $path = Get-Location
   $drupal = New-Drupal
   $root = $drupal.findRoot($path);
   $console = $drupal.findDrupalConsole($root);

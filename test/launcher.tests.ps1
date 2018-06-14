@@ -19,22 +19,26 @@ Describe 'drupal CLI powershell integration' {
   }
 
   It "Invokes drush" {
-    $output = (drush "$PSScriptRoot\d8-root\web") | out-string
+    Set-Location "$PSScriptRoot\d8-root\web"
+    $output = drush | out-string
     $output.Trim() | Should -Be "drush"
   }
 
   It "Invokes drupal console" {
-    $output = (drupal "$PSScriptRoot\d8-root\web") | out-string
+    Set-Location "$PSScriptRoot\d8-root\web"
+    $output = drupal | out-string
     $output.Trim() | Should -Be "drupal"
   }
 
   It "Doesn't launch drush if not found" {
-    $output = (drush "$PSScriptRoot\empty") | out-string
+    Set-Location "$PSScriptRoot\empty"
+    $output = drush | out-string
     $output.Trim() | Should -Be "Could not find drush."
   }
 
   It "Doesn't launch drupal if not found" {
-    $output = (drupal "$PSScriptRoot\empty") | out-string
+    Set-Location "$PSScriptRoot\empty"
+    $output = drupal | out-string
     $output.Trim() | Should -Be "Could not find drupal console."
   }
 
