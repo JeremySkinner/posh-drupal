@@ -15,9 +15,7 @@ function drush() {
   if ($drush) {
     Set-EnvironmentVariables
     # Make sure we run drush in the web directory
-    Push-Location "$root/web"
-    & $global:DrupalSettings.PhpExecutable $drush $args;
-    Pop-Location
+    & $global:DrupalSettings.PhpExecutable $drush --root="$root/web" $args;
     Reset-EnvironmentVariables
   }
   else {
@@ -34,9 +32,7 @@ function drupal() {
   if ($console) {
     Set-EnvironmentVariables
     # Make sure we run console in the web directory
-    Push-Location "$root/web"
-    & $global:DrupalSettings.PhpExecutable $console $args;
-    Pop-Location
+    & $global:DrupalSettings.PhpExecutable $console --root="$root/web" $args;
     Reset-EnvironmentVariables
   }
   else {
